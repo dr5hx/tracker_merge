@@ -20,7 +20,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          ref: main
+          ref: master
 
       - name: Get dependencies
         run: |
