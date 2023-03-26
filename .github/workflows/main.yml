@@ -1,0 +1,53 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        platform: [ ubuntu-latest ]
+        python-version: [ 3.9 ]
+    name: Build
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Get dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libxml2 libxml2-dev
+          \cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run script
+        run: |
+          python run.py
+
+      - name: Commit files
+        run: |
+          sudo git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          sudo git config --local user.name "github-actions[bot]"
+          sudo git rm --cached --ignore-unmatch -r -f *
+          sudo git add .
+          sudo git commit -m "Add sync changes"
+          sudo git checkout -B master
+          sudo git push -uf origin master
