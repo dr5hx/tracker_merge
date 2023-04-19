@@ -10,10 +10,10 @@ _headers = {
 }
 
 
-def read_conf() -> []:
+def read_conf(confile_file="config.txt") -> []:
     t = None
     try:
-        t = open("config.txt", mode="r", encoding="utf8")
+        t = open(confile_file, mode="r", encoding="utf8")
         return t.readlines()
     finally:
         if t is not None:
@@ -25,31 +25,46 @@ def parse_text(text: str) -> []:
 
 
 def get_trackers(url: str) -> []:
+    s = requests.session()
+    s.keep_alive = False
     res = requests.get(url.strip(), headers=_headers)
+    res.close()
     if res.status_code == 200:
         return parse_text(res.text)
     return []
 
 
-def merge_tracker_list(all_tracker_list: []) -> set:
-    s = set(all_tracker_list)
+def merge_tracker_list(all_tracker_lists: []) -> set:
+    s = set(all_tracker_lists)
     s.remove('')
     return s
 
 
-def write_to_file(merged_result: set):
-    with open(file="all.txt", mode="w", encoding="utf8") as f:
-        for r in merged_result:
+def write_to_file(merged_results: set, output_file_name="all.txt"):
+    with open(file=output_file_name, mode="w", encoding="utf8") as f:
+        for r in merged_results:
             f.write(r)
             f.write("\n")
 
 
-def move_file():
-    os.rename("all.txt", "daily_back/all_" + time.strftime("%Y-%m-%d", time.localtime()) + ".txt")
+def move_file(output_file_name="all.txt", backup_dir="daily_back/all_"):
+    os.rename(output_file_name, backup_dir + time.strftime("%Y-%m-%d", time.localtime()) + ".txt")
 
 
 if __name__ == '__main__':
-    conf_list = read_conf()
+    config_list = [{"config": "config.txt",
+                    "file": "all.txt",
+                    "backup_dir": "daily_back/all_"
+                    }
+        ,
+
+                   {"config": "config_best.txt",
+                    "file": "best_all.txt",
+                    "backup_dir": "daily_back/best_all_"
+                    }
+                   ]
+    for i in config_list:
+        conf_list = read_conf(i['config'])
     all_tracker_list = []
     for conf in conf_list:
         tracker_list = get_trackers(conf)
@@ -57,5 +72,5 @@ if __name__ == '__main__':
     print("current size is {}".format(len(all_tracker_list)))
     merged_result = merge_tracker_list(all_tracker_list)
     print("merged size is {}".format(len(merged_result)))
-    move_file()
-    write_to_file(merged_result)
+    move_file(i['file'], i['backup_dir'])
+    write_to_file(merged_result, i['file'])

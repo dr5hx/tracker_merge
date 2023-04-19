@@ -1,0 +1,3 @@
+https://newtrackon.com/api/stable
+https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/best.txt
