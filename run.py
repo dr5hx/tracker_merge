@@ -52,6 +52,8 @@ def write_to_file(merged_results: set, output_file_name="all.txt"):
 
 def move_file(output_file_name="all.txt", backup_dir="daily_back/all_"):
     dest_file = backup_dir + time.strftime("%Y-%m-%d", time.localtime()) + ".txt"
+    if not os.path.exists(output_file_name):
+        return
     if os.path.exists(dest_file):
         os.remove(dest_file)
     os.rename(output_file_name, dest_file)
@@ -60,13 +62,13 @@ def move_file(output_file_name="all.txt", backup_dir="daily_back/all_"):
 if __name__ == '__main__':
     config_list = [{"config": "config.txt",
                     "file": "all.txt",
-                    "backup_dir": "daily_back/all_"
+                    "daily_back": "daily_back/all_"
                     }
         ,
 
                    {"config": "config_best.txt",
                     "file": "best_all.txt",
-                    "backup_dir": "daily_back/best_all_"
+                    "daily_back": "daily_back/best_all_"
                     }
                    ]
     for i in config_list:
@@ -78,5 +80,5 @@ if __name__ == '__main__':
             print("current size is {}".format(len(all_tracker_list)))
             merged_result = merge_tracker_list(all_tracker_list)
             print("merged size is {}".format(len(merged_result)))
-            move_file(i['file'], i['backup_dir'])
+            move_file(i['file'], i['daily_back'])
             write_to_file(merged_result, i['file'])

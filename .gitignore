@@ -6,5 +6,5 @@
 *.iml
 out
 gen
-backup_dir
-!backup_dir/.gitkeep
+daily_back
+!daily_back/.gitkeep
