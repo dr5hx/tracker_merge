@@ -65,12 +65,12 @@ if __name__ == '__main__':
                    ]
     for i in config_list:
         conf_list = read_conf(i['config'])
-    all_tracker_list = []
-    for conf in conf_list:
-        tracker_list = get_trackers(conf)
-        all_tracker_list.extend(tracker_list)
-    print("current size is {}".format(len(all_tracker_list)))
-    merged_result = merge_tracker_list(all_tracker_list)
-    print("merged size is {}".format(len(merged_result)))
-    move_file(i['file'], i['backup_dir'])
-    write_to_file(merged_result, i['file'])
+        all_tracker_list = []
+        for conf in conf_list:
+            tracker_list = get_trackers(conf)
+            all_tracker_list.extend(tracker_list)
+            print("current size is {}".format(len(all_tracker_list)))
+            merged_result = merge_tracker_list(all_tracker_list)
+            print("merged size is {}".format(len(merged_result)))
+            move_file(i['file'], i['backup_dir'])
+            write_to_file(merged_result, i['file'])
