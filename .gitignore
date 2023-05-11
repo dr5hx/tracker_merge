@@ -6,3 +6,5 @@
 *.iml
 out
 gen
+backup_dir
+!backup_dir/.gitkeep
