@@ -6,7 +6,8 @@ import time
 import requests
 
 _headers = {
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36'
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                  'Chrome/103.0.5060.66 Safari/537.36'
 }
 
 
@@ -27,7 +28,8 @@ def parse_text(text: str) -> []:
 def get_trackers(url: str) -> []:
     s = requests.session()
     s.keep_alive = False
-    res = requests.get(url.strip(), headers=_headers)
+    res = s.get(url.strip(), headers=_headers)
+
     res.close()
     if res.status_code == 200:
         return parse_text(res.text)
@@ -36,7 +38,8 @@ def get_trackers(url: str) -> []:
 
 def merge_tracker_list(all_tracker_lists: []) -> set:
     s = set(all_tracker_lists)
-    s.remove('')
+    if '' in s:
+        s.remove('')
     return s
 
 
@@ -48,7 +51,10 @@ def write_to_file(merged_results: set, output_file_name="all.txt"):
 
 
 def move_file(output_file_name="all.txt", backup_dir="daily_back/all_"):
-    os.rename(output_file_name, backup_dir + time.strftime("%Y-%m-%d", time.localtime()) + ".txt")
+    dest_file = backup_dir + time.strftime("%Y-%m-%d", time.localtime()) + ".txt"
+    if os.path.exists(dest_file):
+        os.remove(dest_file)
+    os.rename(output_file_name, dest_file)
 
 
 if __name__ == '__main__':
