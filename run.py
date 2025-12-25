@@ -3,6 +3,7 @@
 import os
 import time
 import re
+import shutil
 import requests
 
 _headers = {
@@ -115,9 +116,41 @@ def process_history_data(backup_root="daily_back"):
     print("Processed {} historical files.".format(count))
 
 
+def archive_past_years(backup_root="daily_back"):
+    """
+    Compress Year directories that are older than the current year into .zip files,
+    and delete the original directories.
+    """
+    if not os.path.exists(backup_root):
+        return
+
+    current_year = int(time.strftime("%Y", time.localtime()))
+    
+    for item in os.listdir(backup_root):
+        item_path = os.path.join(backup_root, item)
+        
+        # Check if it is a directory and looks like a year (4 digits)
+        if os.path.isdir(item_path) and item.isdigit() and len(item) == 4:
+            year = int(item)
+            if year < current_year:
+                try:
+                    # Create zip archive (shutil.make_archive adds .zip extension automatically)
+                    # base_name is the path without extension
+                    shutil.make_archive(item_path, 'zip', item_path)
+                    print("Archived {} to {}.zip".format(item_path, item_path))
+                    
+                    # Remove the original directory
+                    shutil.rmtree(item_path)
+                    print("Deleted original directory {}".format(item_path))
+                except Exception as e:
+                    print("Error archiving {}: {}".format(item, e))
+
+
 if __name__ == '__main__':
     # Process historical data first
     process_history_data()
+    # Archive past years
+    archive_past_years()
 
     config_list = [{"config": "config.txt",
                     "file": "all.txt",
