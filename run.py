@@ -48,7 +48,7 @@ def write_to_file(merged_results: set, output_file_name="all.txt"):
     with open(file=output_file_name, mode="w", encoding="utf8") as f:
         for r in merged_results:
             f.write(r)
-            f.write("\n")
+            f.write("\n\n")
 
 
 def move_file(output_file_name="all.txt", backup_dir="daily_back/all_"):
