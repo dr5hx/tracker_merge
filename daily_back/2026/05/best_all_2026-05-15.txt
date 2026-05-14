@@ -20,10 +20,6 @@ udp://tracker.1h.is:1337/announce
 
 udp://tracker.nyaa.vc:6969/announce
 
-https://1337.abcvg.info:443/announce
-
-https://tr.abir.ga:443/announce
-
 http://wegkxfcivgx.ydns.eu:80/announce
 
 udp://tracker.auctor.tv:6969/announce
@@ -42,8 +38,6 @@ http://bt1.archive.org:6969/announce
 
 https://torrents.tmtime.dev:443/announce
 
-https://tracker.kuroy.me:443/announce
-
 udp://tracker.wildkat.net:6969/announce
 
 udp://tracker.srv00.com:6969/announce
@@ -60,13 +54,9 @@ udp://vito-tracker.duckdns.org:6969/announce
 
 http://tracker.dhitechnical.com:6969/announce
 
-https://tr.abiir.top:443/announce
-
 udp://tracker.tryhackx.org:6969/announce
 
 https://tracker.pmman.tech:443/announce
-
-udp://open.tracker.ink:6969/announce
 
 udp://tracker.plx.im:6969/announce
 
@@ -82,19 +72,9 @@ https://tracker.qingwapt.org:443/announce
 
 udp://martin-gebhardt.eu:25/announce
 
-https://tracker1.520.jp:443/announce
-
-udp://tracker.004430.xyz:1337/announce
-
 udp://evan.im:6969/announce
 
-http://tracker3.ctix.cn:8080/announce
-
-http://nyaa.tracker.wf:7777/announce
-
 https://tr.nyacat.pw:443/announce
-
-udp://p4p.arenabg.com:1337/announce
 
 udp://tracker.torrent.eu.org:451/announce
 
@@ -118,17 +98,7 @@ https://tracker.zhuqiy.com:443/announce
 
 udp://wepzone.net:6969/announce
 
-http://torrentsmd.com:8080/announce
-
-udp://tracker.skyts.net:6969/announce
-
-http://www.wareztorrent.com:80/announce
-
 udp://vito-tracker.space:6969/announce
-
-udp://opentor.org:2710/announce
-
-wss://tracker.openwebtorrent.com:443/announce
 
 udp://tracker.opentrackr.org:1337/announce
 
@@ -143,6 +113,4 @@ udp://retracker.hotplug.ru:2710/announce
 https://tracker.7471.top:443/announce
 
 udp://tracker.ducks.party:1984/announce
-
-http://1337.abcvg.info:80/announce
 
