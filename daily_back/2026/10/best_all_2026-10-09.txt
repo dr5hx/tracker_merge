@@ -4,17 +4,7 @@ udp://opentracker.lain.moscow:6969/announce
 
 udp://kolankoalastree.newtrackon.co.nz:1337/announce
 
-http://nyaa.tracker.wf:7777/announce
-
-wss://tracker.openwebtorrent.com:443/announce
-
 udp://martin-gebhardt.eu:25/announce
-
-udp://tracker.skyts.net:6969/announce
-
-udp://open.tracker.ink:6969/announce
-
-https://tracker1.520.jp:443/announce
 
 udp://tracker.corpscorp.online:80/announce
 
@@ -30,19 +20,11 @@ udp://tracker.farted.net:6969/announce
 
 udp://t.overflow.biz:6969/announce
 
-http://torrentsmd.com:8080/announce
-
-http://www.wareztorrent.com:80/announce
-
 udp://tracker.dler.org:6969/announce
 
 udp://tracker.wildkat.net:6969/announce
 
 udp://open.demonii.com:1337/announce
-
-https://tr.abiir.top:443/announce
-
-https://tracker.kuroy.me:443/announce
 
 https://tracker.foreverpirates.co:443/announce
 
@@ -62,8 +44,6 @@ udp://tracker.skynetcloud.site:6969/announce
 
 udp://tracker2.dler.org:80/announce
 
-http://1337.abcvg.info:80/announce
-
 udp://retracker.hotplug.ru:2710/announce
 
 udp://tracker.peerfect.org:6969/announce
@@ -77,8 +57,6 @@ https://t.213891.xyz:443/announce
 udp://evan.im:6969/announce
 
 udp://tracker.qu.ax:6969/announce
-
-https://1337.abcvg.info:443/announce
 
 http://wegkxfcivgx.ydns.eu:80/announce
 
@@ -110,8 +88,6 @@ https://tracker.pmman.tech:443/announce
 
 udp://tracker.ducks.party:1984/announce
 
-https://tr.burnabyhighstar.com:443/announce
-
 udp://tracker.ilibr.org:6969/announce
 
 udp://v2.iperson.xyz:6969/announce
@@ -132,15 +108,9 @@ udp://tracker.nyaa.vc:6969/announce
 
 udp://open.stealth.si:80/announce
 
-udp://p4p.arenabg.com:1337/announce
-
 udp://tracker.nyaa.net:6969/announce
 
 udp://tracker.opentrackr.org:1337/announce
 
-udp://opentor.org:2710/announce
-
 udp://tracker-udp.gbitt.info:80/announce
-
-https://tr.abir.ga:443/announce
 
